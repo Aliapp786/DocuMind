@@ -1,6 +1,6 @@
 # Spring AI Demo
 
-A minimal **Spring Boot 3 + Spring AI** project wired to **Anthropic Claude** via a REST API.
+A minimal **Spring Boot 3 + Spring AI** project wired to **OpenAI (ChatGPT)** via a REST API.
 
 ## Project Structure
 
@@ -26,7 +26,7 @@ spring-ai-demo/
 |------|---------|
 | Java | 17 +    |
 | Maven | 3.9 +  |
-| Anthropic API Key | [console.anthropic.com](https://console.anthropic.com) |
+| OpenAI API Key | [platform.openai.com](https://platform.openai.com/api-keys) |
 
 ## Quick Start
 
@@ -35,15 +35,15 @@ spring-ai-demo/
 **Option A — environment variable (recommended)**
 ```bash
 # Windows PowerShell
-$env:ANTHROPIC_API_KEY = "sk-ant-..."
+$env:OPENAI_API_KEY = "sk-..."
 
 # Linux / macOS
-export ANTHROPIC_API_KEY="sk-ant-..."
+export OPENAI_API_KEY="sk-..."
 ```
 
 **Option B — edit `application.properties` directly**
 ```properties
-spring.ai.anthropic.api-key=sk-ant-...
+spring.ai.openai.api-key=sk-...
 ```
 
 ### 2 — Run the app
@@ -59,7 +59,7 @@ mvn spring-boot:run
 
 ### Simple chat (GET)
 ```bash
-curl "http://localhost:8080/api/chat/simple?message=Hello+Claude"
+curl "http://localhost:8080/api/chat/simple?message=Hello+ChatGPT"
 ```
 
 ### Custom system prompt (POST)
@@ -80,12 +80,12 @@ curl "http://localhost:8080/api/chat/stream?message=Tell+me+a+joke"
 
 | Property | Default | Description |
 |----------|---------|-------------|
-| `spring.ai.anthropic.chat.options.model` | `claude-3-5-sonnet-20241022` | Claude model |
-| `spring.ai.anthropic.chat.options.max-tokens` | `1024` | Max response tokens |
-| `spring.ai.anthropic.chat.options.temperature` | `0.7` | Creativity (0–1) |
+| `spring.ai.openai.chat.options.model` | `gpt-4o` | OpenAI model |
+| `spring.ai.openai.chat.options.max-tokens` | `1024` | Max response tokens |
+| `spring.ai.openai.chat.options.temperature` | `0.7` | Creativity (0–1) |
 
 ## Extending the Project
 
 - **RAG / Document Q&A** — add `spring-ai-pgvector-store` or `spring-ai-chroma-store` and use `VectorStore`
 - **Function Calling** — annotate a bean with `@Bean` returning a `FunctionCallback`
-- **Other AI providers** — swap the starter (`spring-ai-openai-spring-boot-starter`, `spring-ai-vertex-ai-gemini-spring-boot-starter`, etc.)
+- **Other AI providers** — swap the starter (`spring-ai-anthropic-spring-boot-starter`, `spring-ai-vertex-ai-gemini-spring-boot-starter`, etc.)

@@ -1,10 +1,10 @@
 package com.example.springaidemo.controller;
 
-import org.springframework.ai.anthropic.AnthropicChatModel;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.SystemPromptTemplate;
+import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 
@@ -12,15 +12,15 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * REST controller exposing Spring AI chat endpoints backed by Anthropic Claude.
+ * REST controller exposing Spring AI chat endpoints backed by OpenAI (ChatGPT).
  */
 @RestController
 @RequestMapping("/api/chat")
 public class ChatController {
 
-    private final AnthropicChatModel chatModel;
+    private final OpenAiChatModel chatModel;
 
-    public ChatController(AnthropicChatModel chatModel) {
+    public ChatController(OpenAiChatModel chatModel) {
         this.chatModel = chatModel;
     }
 

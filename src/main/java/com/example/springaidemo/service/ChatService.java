@@ -1,15 +1,15 @@
 package com.example.springaidemo.service;
 
-import org.springframework.ai.anthropic.AnthropicChatModel;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.SystemPromptTemplate;
+import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- * Service layer wrapping Spring AI interactions.
+ * Service layer wrapping Spring AI interactions with OpenAI (ChatGPT).
  * Keeps business logic out of the controller.
  */
 @Service
@@ -18,9 +18,9 @@ public class ChatService {
     private static final String DEFAULT_SYSTEM =
             "You are a helpful, concise, and friendly AI assistant.";
 
-    private final AnthropicChatModel chatModel;
+    private final OpenAiChatModel chatModel;
 
-    public ChatService(AnthropicChatModel chatModel) {
+    public ChatService(OpenAiChatModel chatModel) {
         this.chatModel = chatModel;
     }
 
